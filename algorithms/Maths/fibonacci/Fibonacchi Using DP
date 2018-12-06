@@ -1,0 +1,33 @@
+This program calculates nth fibonacchi number.
+
+#include <stdio.h>
+
+int fib(int n,unsigned long long memo[]){
+
+  unsigned long long result;
+  if(memo[n]!='\0')
+    return memo[n];
+
+  if(n==1||n==2){
+    return 1;
+  }
+
+  result= fib(n-1,memo) +fib(n-2,memo);
+  memo[n]=result;
+  return result;
+}
+
+
+int main(){
+  int n;
+  unsigned long long x, memo[1000]={'\0'};
+  printf("this is a program to return nth term of fibnonacci series\n");
+  scanf("%d",&n);
+  x=fib(n,memo);
+  printf("the nth term is : %llu\n",x);
+  return 0;
+}
+// try running this program by removing memo and note down the time it takes to
+// calculate 10 20 30..... and so on it wont be able to calculate 100
+//now after adding memo again calculate your answer it will be much faster
+//this is use of dynamic programming
